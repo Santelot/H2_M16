@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M16</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a trabajar en mejorar nuestra app de tareas añadiendo una opción para comentarios."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de iniciar, quiero ver cómo están. Si se sienten con energía, toquen la punta de su nariz. Si están un poco cansados, estiren los brazos hacia arriba."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por estar aquí, listos para aprender y crear algo increíble. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos importantes: 1. Implementar la función de comentarios en nuestra app de tareas en Glide. 2. Asegurarnos de que esta función sea accesible y útil para todos los usuarios."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🌟 Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Ejercicio de percepción auditiva para aumentar la concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Cierre de Ojos y Escucha".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a hacer un ejercicio rápido. Cierren los ojos y concéntrense en los sonidos a su alrededor durante un minuto. Esto nos ayuda a mejorar nuestra percepción auditiva y a ser más conscientes del entorno."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre el Ejercicio".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Muy bien, Genios. Este ejercicio nos ayuda a ser más conscientes del mundo que nos rodea y a mejorar nuestra capacidad de escuchar. La percepción auditiva es clave cuando trabajamos en equipo o cuando debemos captar detalles importantes."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Reunión de equipos para la actividad colaborativa.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Reunión de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a trabajar en los mismos equipos de la misión anterior. Tienen un minuto para reunirse con sus compañeros."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, necesito que un representante de cada equipo pase a recoger una Magic Tablet para su grupo. Tienen un minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🚀 Actividad 4: Challenge ⏰ Tiempo: 24.5 minutos</div>
+        <div class="subtitle">Implementación de la funcionalidad de comentarios en la app de tareas.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 13 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de poner en práctica lo que diseñaron en papel. Vamos a montar el sistema de comentarios en nuestra app de seguimiento de tareas familiares. Este reto nos ayudará a llevar nuestra app al siguiente nivel, haciéndola más interactiva y útil."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 14 "Implementación de Comentarios".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El reto de hoy consiste en implementar la funcionalidad de comentarios que diseñaron en la misión pasada. Primero, revisaremos la base de datos de la app. Asegúrense de que haya un campo donde los usuarios puedan añadir comentarios específicos para cada tarea. Esto permitirá que cada tarea tenga su propio espacio para comentarios y que los usuarios puedan dejar notas o recordatorios útiles.
+
+Una vez que tengan listo el campo en la base de datos, deben configurar la interfaz de usuario en Glide para que el campo de comentarios aparezca en la pantalla correspondiente de cada tarea. Al hacerlo, piensen en cómo se verá la función de comentarios: ¿es fácil de encontrar? ¿Se integra bien con el diseño de la app?
+
+Un aspecto muy importante es que solo se muestren los comentarios de la tarea seleccionada. Por ejemplo, si abren la tarea de 'Lavar los platos', únicamente deben aparecer los comentarios que alguien haya dejado para esa tarea. Esto ayudará a mantener todo organizado y evitar confusión.
+
+Asegúrense también de probar que todo funcione correctamente y que los comentarios se guarden y se puedan ver sin problemas. Este tipo de atención al detalle es lo que hace que una aplicación sea verdaderamente funcional y atractiva para el usuario."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (15 minutos):</strong> Proyectar Diapositiva 15 "Cronómetro - 15 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 16 "Comparación en Equipo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora que tienen la funcionalidad de comentarios implementada, quiero que se reúnan con el equipo más cercano. Juntos, van a probar las funciones de comentarios de cada app, observando cómo funciona en cada equipo y comparando ideas. Esto les ayudará a detectar mejoras o detalles que quizá no habían notado antes. Tómense unos minutos para compartir y mejorar entre todos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (5 minutos):</strong> Proyectar Diapositiva 17 "Cronómetro - 5 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 18 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Excelente trabajo, Genios. Hoy logramos implementar y verificar una funcionalidad clave: el sistema de comentarios en la app de tareas. Esto nos acerca a tener una aplicación completa y práctica, mejorando la comunicación y el seguimiento de tareas. ¡Cada paso que damos es un avance hacia el desarrollo de una solución funcional y profesional!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 19 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han hecho un excelente trabajo implementando esta nueva funcionalidad. Han ganado Mon-e por su dedicación y esfuerzo en crear una app que sea práctica y útil para todos. ¡Sigan así!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Recogida y organización del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 20 "Honor de Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a finalizar nuestra misión de hoy. Cada equipo, por favor, pasen al frente a dejar sus Magic Tablets y asegúrense de que el espacio quede limpio y ordenado. Honrar nuestro espacio de trabajo es una parte importante de nuestro proceso."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
